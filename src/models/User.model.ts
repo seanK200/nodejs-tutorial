@@ -7,7 +7,9 @@ import {
   AllowNull,
   Unique,
   Default,
+  HasMany,
 } from "sequelize-typescript";
+import { Post } from "./Post.model";
 
 export type UserAttribs = {
   id: number;
@@ -15,6 +17,7 @@ export type UserAttribs = {
   password: string;
   salt: string;
   createdAt: Date;
+  posts?: Post[];
 };
 
 type UserCAttribs = Optional<UserAttribs, "id" | "createdAt">;
@@ -46,6 +49,9 @@ export class User extends Model<UserAttribs, UserCAttribs> {
   @AllowNull(false)
   @Column(DataType.DATE)
   createdAt!: UserAttribs["createdAt"];
+
+  @HasMany(() => Post, "createdById")
+  posts: UserAttribs["posts"];
 
   toResponse(): UserResponse {
     return {
