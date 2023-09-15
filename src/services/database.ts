@@ -21,6 +21,6 @@ export const sequelize = new Sequelize({
 export const connectDB = async () => {
   await sequelize.authenticate();
   console.log("✅ Connected to database");
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ force: true });
   console.log("✅ Database synced");
 };

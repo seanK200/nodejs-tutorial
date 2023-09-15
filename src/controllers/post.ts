@@ -3,11 +3,12 @@ import { Post } from "../models/Post.model";
 import isInt from "validator/lib/isInt";
 import ServerError from "../services/error";
 import { User } from "../models/User.model";
+import { Friend } from "../models/Friend.model";
 
 const postController = {
   viewPosts: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const posts = await Post.findAll({ include: [User] });
+      const posts = await Post.findAll({ include: [User, Friend] });
       const postRes = posts.map((p) => p.toResponse());
 
       res.status(200).json({

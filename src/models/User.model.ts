@@ -10,6 +10,7 @@ import {
   HasMany,
 } from "sequelize-typescript";
 import { Post } from "./Post.model";
+import { Friend } from "./Friend.model";
 
 export type UserAttribs = {
   id: number;
@@ -18,6 +19,7 @@ export type UserAttribs = {
   salt: string;
   createdAt: Date;
   posts?: Post[];
+  friends?: Friend[];
 };
 
 type UserCAttribs = Optional<UserAttribs, "id" | "createdAt">;
@@ -52,6 +54,9 @@ export class User extends Model<UserAttribs, UserCAttribs> {
 
   @HasMany(() => Post, "createdById")
   posts: UserAttribs["posts"];
+
+  @HasMany(() => Friend, "userId")
+  friends: UserAttribs["friends"];
 
   toResponse(): UserResponse {
     return {
