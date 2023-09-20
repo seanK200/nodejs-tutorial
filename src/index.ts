@@ -12,6 +12,7 @@ import accountController from "./controllers/account";
 import authController from "./controllers/auth";
 import postController from "./controllers/post";
 import { errorHandler } from "./controllers/error";
+import faceRecController from "./controllers/face";
 
 // Config
 dotenv.config();
@@ -37,6 +38,8 @@ app
   .route("/post/:id")
   .put(requireAuth, postController.editPost)
   .delete(requireAuth, postController.deletePost);
+
+app.get("/face/verify", faceRecController.verifyFace);
 
 // Error Handler (ALWAYS last)
 app.use(errorHandler);
