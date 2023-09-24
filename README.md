@@ -8,7 +8,15 @@
 ## 개발 환경설정
 
 ```bash
-npm install
+npm init
+npm install express
+npm install -D @types/express
+npm install -D typescript
+npm install -D prettier
+npm install -D nodemon
+npm install -D ts-node
+
+npx tsc - -init
 ```
 
 `package.json`
