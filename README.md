@@ -16,6 +16,7 @@ npm install -D prettier
 npm install -D nodemon
 npm install -D ts-node
 npm install env
+npm install morgan
 ```
 
 `package.json`
