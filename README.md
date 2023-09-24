@@ -16,7 +16,7 @@ npm install -D prettier
 npm install -D nodemon
 npm install -D ts-node
 
-npx tsc - -init
+npx tsc --init
 ```
 
 `package.json`
