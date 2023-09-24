@@ -8,7 +8,7 @@
 ## 개발 환경설정
 
 ```bash
-npm init
+npm init -y (-y: 모든 입력값을 기본값으로 설정)
 npm install express
 npm install -D @types/express
 npm install -D typescript
